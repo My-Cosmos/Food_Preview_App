@@ -1,6 +1,13 @@
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+// import { useNavigation } from '@react-navigation/native'
 
-const CategoryGridTile = ({ title, color }) => {
+const CategoryGridTile = ({ title, color, _onPress }) => {
+  /*
+  //006/008/02:33
+  //can use useNavigation Hook no matter if it is registered or not in <stack.screen>.
+  const navigation = useNavigation();//by this will get access to the **navigation** object of **CategoriesScreen.js** file
+  //This is the alternative of passing **navigation** object through props when a component is not registered in <stack.screen> but still want to access it(if it's a case).
+  */
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -9,6 +16,7 @@ const CategoryGridTile = ({ title, color }) => {
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={_onPress}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}>{title}</Text>
